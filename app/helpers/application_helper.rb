@@ -85,7 +85,7 @@ module ApplicationHelper
   
   def read_rss_feed
     output = "<ul>"
-    feed_url = "http://ondetrabalhar.com/ruby.rss"
+    feed_url = "http://ondetrabalhar.com/ruby+or+rails.rss"
     open(feed_url) do |http|
       response = http.read
       result = RSS::Parser.parse(response, false)
