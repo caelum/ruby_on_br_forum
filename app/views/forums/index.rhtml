@@ -16,6 +16,12 @@
     <p>
       <a class="link_feed" href="<%= all_posts_path %>"> <img src="/images/baloom.gif" /><br>Posts Recentes</a>
     </p>
+	<p>
+		<div id='ondeTrabalhar'>
+			<%= read_rss_feed %>
+		</div>
+	</p>
+	
   </div>
 
   <% unless User.currently_online.empty? %>
@@ -105,7 +111,6 @@
   
     </tr>
   </table>
-
 
   <br/><br/>
   <% 

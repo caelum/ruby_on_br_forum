@@ -1,4 +1,6 @@
 require 'md5'
+require 'rss/2.0'
+require 'open-uri'
 
 module ApplicationHelper
 
@@ -79,6 +81,20 @@ module ApplicationHelper
       else "#{(distance_in_minutes / 10080).round} semanas atrás"
       #else from_time.strftime("%d/%m/%y %H:%M")
     end
+  end
+  
+  def read_rss_feed
+    output = "<ul>"
+    feed_url = "http://ondetrabalhar.com/ruby.rss"
+    open(feed_url) do |http|
+      response = http.read
+      result = RSS::Parser.parse(response, false)
+      output += "<div><span>#{result.channel.title}</span></div>" 
+      result.items.each_with_index do |item, i|
+        output += "<li> &rarr; <a href='#{item.link}'>#{item.title}</a></li>" if i < 5  
+      end  
+    end
+    output << '</ul>'
   end
 
 end

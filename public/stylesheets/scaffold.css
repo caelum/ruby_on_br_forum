@@ -54,3 +54,29 @@ div.progressBar div.background {
   width: 0%;
 }
 
+
+/*Onde trabalhar*/
+#ondeTrabalhar {
+	background-color:grey;
+	border:1px solid black; 
+	text-align:left;
+}
+#ondeTrabalhar ul {
+	list-style:none; 
+	color:#DDDDDD; 
+	margin:2px;
+	padding:0px 0px 10px 15px;
+}
+
+#ondeTrabalhar div {
+	text-align:center;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	font-size:14px;
+}
+
+#ondeTrabalhar li {
+	font-size:12px;
+}
+
+
