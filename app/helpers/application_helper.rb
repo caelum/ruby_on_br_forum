@@ -89,13 +89,13 @@ module ApplicationHelper
       open(feed_url) do |http|
         response = http.read
         result = RSS::Parser.parse(response, false)
-        output += "<div><span>#{result.channel.title}</span></div>" 
+        output += "<div id='feedOk'><span>#{result.channel.title}</span></div>" 
         result.items.each_with_index do |item, i|
           output += "<li> &rarr; <a href='#{item.link}'>#{item.title}</a></li>" if i < 5  
         end  
       end
     rescue Exception => e
-      output << "<li>O feed est&aacute; indispon&iacute;vel, acesse diretamente o <a href='http://ondetrabalhar.com'>Onde Trabalhar</a></li>"
+      output << "<li id='feedIndsp'>O feed est&aacute; indispon&iacute;vel, acesse diretamente o <a href='http://ondetrabalhar.com'>Onde Trabalhar</a></li>"
     end
     output << '</ul>'
   end
