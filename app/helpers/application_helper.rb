@@ -83,18 +83,23 @@ module ApplicationHelper
     end
   end
   
-  def read_rss_feed
+  def read_rss_feed(feed_url = "http://ondetrabalhar.com/ruby+or+rails.rss")
     output = "<ul>"
-    feed_url = "http://ondetrabalhar.com/ruby+or+rails.rss"
-    open(feed_url) do |http|
-      response = http.read
-      result = RSS::Parser.parse(response, false)
-      output += "<div><span>#{result.channel.title}</span></div>" 
-      result.items.each_with_index do |item, i|
-        output += "<li> &rarr; <a href='#{item.link}'>#{item.title}</a></li>" if i < 5  
-      end  
+    begin
+      open(feed_url) do |http|
+        response = http.read
+        result = RSS::Parser.parse(response, false)
+        output += "<div><span>#{result.channel.title}</span></div>" 
+        result.items.each_with_index do |item, i|
+          output += "<li> &rarr; <a href='#{item.link}'>#{item.title}</a></li>" if i < 5  
+        end  
+      end
+    rescue Exception => e
+      output << "<li>O feed est&aacute; indispon&iacute;vel, acesse diretamente o <a href='http://ondetrabalhar.com'>Onde Trabalhar</a></li>"
     end
     output << '</ul>'
   end
-
+ 
 end
+
+
