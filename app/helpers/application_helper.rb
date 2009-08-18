@@ -83,7 +83,7 @@ module ApplicationHelper
     end
   end
   
-  def read_rss_feed(feed_url = "http://ondetrabalhar.com/ruby+or+rails.rss")
+  def read_rss_feed(feed_url = "http://ondetrabalhar.com/ruby+ou+rails.rss")
     output = "<ul>"
     begin
       open(feed_url) do |http|
